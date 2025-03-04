@@ -168,9 +168,5 @@ class ThirdRegistrationActivity : BaseActivity() {
 
         return inputDate.before(tomorrow)
     }
-
-    private fun isValidEmail(email: String): Boolean {
-        return email.length == 10 && email.matches(Regex("^[0-9]{10}$"))
-    }
 }
 

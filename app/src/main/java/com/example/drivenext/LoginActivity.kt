@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.ImageButton
-import android.util.Patterns
 
 class LoginActivity : BaseActivity() {
     private lateinit var emailEditText: EditText
@@ -37,15 +36,6 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    private fun togglePasswordVisibility(editText: EditText) {
-        if (editText.inputType == 129) { // TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD
-            editText.inputType = 144 // TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        } else {
-            editText.inputType = 129 // TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD
-        }
-        editText.setSelection(editText.text.length)
-    }
-
     private fun validateData(
     ): Boolean {
         var isValid = true
@@ -73,13 +63,5 @@ class LoginActivity : BaseActivity() {
         }
 
         return isValid
-    }
-
-    private fun isValidEmail(email: String): Boolean {
-        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    private fun isValidPassword(password: String): Boolean {
-        return password.length >= 6
     }
 }

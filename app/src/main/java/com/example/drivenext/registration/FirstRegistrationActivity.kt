@@ -8,7 +8,6 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
-import android.util.Patterns
 import com.example.drivenext.BaseActivity
 import com.example.drivenext.R
 
@@ -102,10 +101,6 @@ class FirstRegistrationActivity : BaseActivity() {
         return isValid
     }
 
-    private fun isValidEmail(email: String): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
     private fun setPasswordVisibilityToggle() {
         eyeButton.setOnClickListener {
             togglePasswordVisibility(passwordEditText)
@@ -113,14 +108,5 @@ class FirstRegistrationActivity : BaseActivity() {
         eyeButton2.setOnClickListener {
             togglePasswordVisibility(confirmPasswordEditText)
         }
-    }
-
-    private fun togglePasswordVisibility(editText: EditText) {
-        if (editText.inputType == 129) { // TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD
-            editText.inputType = 144 // TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        } else {
-            editText.inputType = 129 // TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD
-        }
-        editText.setSelection(editText.text.length)
     }
 }
